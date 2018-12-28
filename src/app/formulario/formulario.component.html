@@ -1,0 +1,35 @@
+<div class="container">
+  <form name="form" (ngSubmit)="f.form.valid && enviar()" #f="ngForm">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control" 
+        id="nombre" aria-describedby="nombreHelp"
+        placeholder="Ingrese nombre" required minlength="8">
+      <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+        Nombre es requerido
+      </div>
+      <small id="nombreHelp" class="form-text text-muted">No lo vamos a compartir.</small>
+    </div>
+    <div class="form-group">
+      <label for="apellido">Apellido</label>
+      <input type="text" [(ngModel)]="apellido" name="apellido" class="form-control" id="apellido" placeholder="Ingrese apellido"
+        required minlength="8">
+    </div>
+    <div class="form-group">
+      <label for="nacionalidad">Nacionalidad</label>
+      <select class="form-control" id="nacionalidad" [(ngModel)]="idNacionalidad" name="idNacionalidad">
+        <option *ngFor="let nacionalidad of nacionalidades" value="{{nacionalidad.id}}">
+          {{nacionalidad.nombre}}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" (click)="enviar()" class="btn btn-primary">Submit</button>
+  </form>
+
+  {{ 'Mensaje de error' }}
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
